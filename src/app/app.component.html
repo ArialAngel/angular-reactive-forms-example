@@ -12,11 +12,14 @@
             type="text"
             formControlName="nombre"
             class="form-control"
-            
+            [ngClass]="{ 'is-invalid': submitted && ['control.nombre.errors'] }"
           />
-          <div *ngIf="submitted && f.['nombre'].errors" class="invalid-feedback">
-            <div *ngIf="f.nombre.errors.required">
+          <div *ngIf="submitted && ['control.nombre.errors']" class="invalid-feedback">
+            <div *ngIf="['control.nombre.errors.required'] "style="color:red">
               El nombre es obligatorio
+            </div>
+            <div *ngIf="['control.nombre.errors.maxLenght'] "style="color:red">
+              El nombre debe tener maximo 15 caracteres
             </div>
           </div>
         </div>
@@ -26,10 +29,30 @@
             type="text"
             formControlName="apellido"
             class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.apellido.errors }"
+            [ngClass]="{ 'is-invalid': submitted && ['control.apellido.errors'] }"
           />
-          <div *ngIf="submitted && f.apellido.errors" class="invalid-feedback">
-            <div *ngIf="f.apellido.errors.required">El apellido es obligatorio</div>
+          <div *ngIf="submitted && ['control.apellido.errors']" class="invalid-feedback">
+            <div *ngIf="['control.apellido.errors.required']"style="color:red">
+            El apellido es obligatorio</div>
+            <div *ngIf="['control.apellido.errors.maxLenght']"style="color:red">
+              El apellido debe tener maximo 10 caracteres</div>
+          </div>
+        </div>
+        <div class="form-group col-5">
+          <label>Usuario</label>
+          <input
+            type="text"
+            formControlName="usuario"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && ['control.usuario.errors'] }"
+          />
+          <div *ngIf="submitted && ['control.usuario.errors']" class="invalid-feedback">
+            <div *ngIf="['control.usuario.errors.required']"style="color:red">
+            El usuario es obligatorio</div>
+            <div *ngIf="['control.usuario.errors.maxLenght']"style="color:red">
+              El usuario debe tener maximo 10 caracteres</div>
+            <div *ngIf="['control.usuario.errors.minLenght']"style="color:red">
+              El usuario debe tener minimo 3 caracteres</div>
           </div>
         </div>
       </div>
@@ -39,11 +62,12 @@
           type="text"
           formControlName="email"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+          [ngClass]="{ 'is-invalid': submitted && ['control.email.errors'] }"
         />
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">El email es obligatorio</div>
-          <div *ngIf="f.email.errors.email">
+        <div *ngIf="submitted && ['control.email.errors']" class="invalid-feedback">
+          <div *ngIf="['control.email.errors.required']"style="color:red">
+            El email es obligatorio</div>
+          <div *ngIf="['control.email.errors.email']"style="color:red">
             Debe ser un email valido
           </div>
         </div>
@@ -55,11 +79,12 @@
             type="password"
             formControlName="password"
             class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+            [ngClass]="{ 'is-invalid': submitted && ['control.password.errors'] }"
           />
-          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">La contraseña es obligatoria</div>
-            <div *ngIf="f.password.errors.minlength">
+          <div *ngIf="submitted && ['control.password.errors']" class="invalid-feedback">
+            <div *ngIf="['control.password.errors.required']"style="color:red">
+              La contraseña es obligatoria</div>
+            <div *ngIf="['control.password.errors.minlength']"style="color:red">
               La contraseña debe tener al menos 6 caracteres
             </div>
           </div>
@@ -70,18 +95,19 @@
             type="password"
             formControlName="confirmPassword"
             class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
+            [ngClass]="{ 'is-invalid': submitted && ['control.confirmPassword.errors']}"
           />
           <div
-            *ngIf="submitted && f.confirmPassword.errors"
+            *ngIf="submitted && ['control.confirmPassword.errors']"
             class="invalid-feedback"
           >
-            <div *ngIf="f.confirmPassword.errors.required">
+            <div *ngIf="['control.confirmPassword.errors.required']" style="color:red">
               Este campo es obligatorio
             </div>
-            <div *ngIf="f.confirmPassword.errors.mustMatch">
+            <!--<div *ngIf="['control.confirmPassword.errors.mustMatch']">
               Las contraseñas deben coincidir
-            </div>
+            </div>-->
+            
           </div>
         </div>
       </div>

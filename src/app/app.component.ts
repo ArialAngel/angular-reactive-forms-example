@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { MustMatch } from '../app/_helpers/must-match.validator';
 
 
 @Component({
@@ -18,17 +17,21 @@ export class AppComponent implements OnInit{
   constructor(private formBuilder: FormBuilder ){}
 
   ngOnInit() {
+    
     this.registerForm = new FormGroup({
-      nombre:new FormControl (['',[Validators.required,Validators.maxLength(15)]]),
-      apellido:new FormControl (['',[Validators.required,Validators.maxLength(10)]]),
-      usuario:new FormControl (['',[Validators.required,Validators.minLength(3),Validators.maxLength(10)]]),
-      email:new FormControl (['',[Validators.required,Validators.email,MustMatch]]),
-      password:new FormControl (['', [Validators.required, Validators.minLength(6),MustMatch]]),
-      confirmPassword:new FormControl (['', Validators.required]),
+      nombre:new FormControl ('',[Validators.required,Validators.maxLength(15)]),
+      apellido:new FormControl ('',[Validators.required,Validators.maxLength(10)]),
+      usuario:new FormControl ('',[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
+      email:new FormControl ('',[Validators.required,Validators.email]),
+      password:new FormControl ('', [Validators.required, Validators.minLength(6)]),
+      confirmPassword:new FormControl ('', [Validators.required]),
+    },{
+      
     })
+  
   }
 
-  get f() {return this.registerForm.controls;}
+  get control() {return this.registerForm.controls;}
 
   onSubmit() {
     this.submitted = true;
